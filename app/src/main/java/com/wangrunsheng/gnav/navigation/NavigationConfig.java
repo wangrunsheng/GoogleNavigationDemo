@@ -10,7 +10,11 @@ import java.util.List;
 public class NavigationConfig {
 
     public final static NavigationModel.NavigationItemEnum[] ITEMS = new NavigationModel.NavigationItemEnum[] {
-            // TODO: 2018/4/25 需要导航的页面
+            NavigationModel.NavigationItemEnum.HOME,
+            NavigationModel.NavigationItemEnum.SCHEDULE,
+            NavigationModel.NavigationItemEnum.FEED,
+            NavigationModel.NavigationItemEnum.MAP,
+            NavigationModel.NavigationItemEnum.INFO,
     };
 
     // 该方法把BuildConfig中无效化的导航页面去掉了

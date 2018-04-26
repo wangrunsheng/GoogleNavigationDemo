@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GoogleNavigationDemo</string>
+    <string name="navdrawer_description_a11y">Navigation Menu</string>
+    <string name="close_and_go_back">Close and go back</string>
+
+    <string name="navdrawer_item_home">Home</string>
+    <string name="navdrawer_item_schedule">Schedule</string>
+    <string name="navdrawer_item_feed">Feed</string>
+    <string name="navdrawer_item_map">Map</string>
+    <string name="navdrawer_item_info">Info</string>
+    <string name="home">Home</string>
 </resources>

@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.wangrunsheng.gnav.navigation.NavigationModel;
+
 /**
  * Created by russell on 2018/4/25.
  */
@@ -12,6 +14,8 @@ import android.support.annotation.Nullable;
 public interface UpdatableView<M extends Model<Q, UA>, Q extends QueryEnum, UA extends UserActionEnum> {
 
     void displayData(M model, Q query);
+
+    void displayData(NavigationModel model, NavigationModel.NavigationQueryEnum query);
 
     void displayErrorMessage(Q query);
 
@@ -21,7 +25,7 @@ public interface UpdatableView<M extends Model<Q, UA>, Q extends QueryEnum, UA e
 
     Context getContext();
 
-    void addListener();
+    void addListener(UserActionListener<UA> listener);
 
     interface UserActionListener<UA extends UserActionEnum> {
 

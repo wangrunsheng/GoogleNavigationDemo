@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GoogleNavigationDemo</string>
+    <string name="navdrawer_description_a11y">导航菜单</string>
+    <string name="close_and_go_back">关闭并返回</string>
+
+    <string name="navdrawer_item_home">首页</string>
+    <string name="navdrawer_item_schedule">日程表</string>
+    <string name="navdrawer_item_feed">Feed</string>
+    <string name="navdrawer_item_map">地图</string>
+    <string name="navdrawer_item_info">信息</string>
+    <string name="home">Home</string>
+</resources>

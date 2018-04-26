@@ -1,11 +1,33 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Widget.Custom.CollapsingHeader" parent="@style/Widget.Design.CollapsingToolbar">
+        <item name="scrimAnimationDuration">200</item>
+        <item name="scrimVisibleHeightTrigger">130dp</item>
+        <item name="statusBarScrim">@null</item>
+        <item name="titleEnabled">false</item>
+    </style>
+
+    <style name="ThemeOverlay.ToolbarPopup" parent="@style/ThemeOverlay.AppCompat.Light" />
+
+    <style name="ProductSans.Title" parent="">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
+        <item name="fontPath">fonts/ProductSans-Regular.ttf</item>
+    </style>
+
+    <style name="Widget.Custom.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="itemIconTint">@color/nav_icon_tint</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:elevation" tools:targetApi="lollipop">@dimen/bottom_nav_elevation</item>
+        <item name="badgeColor">?colorAccent</item>
+        <item name="badgeRadius">3dp</item>
     </style>
 
 </resources>
