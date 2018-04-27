@@ -1,4 +1,4 @@
 # GoogleNavigationDemo
 Google官方Android导航探究
 
-对master分之下几乎是半懂不懂摸索的代码进行精简，尽量抓住这个设计的本质。
+对master分支下几乎是半懂不懂摸索的代码进行精简，尽量抓住这个设计的本质。
