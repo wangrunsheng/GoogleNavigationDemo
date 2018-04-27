@@ -26,7 +26,7 @@ AppNavigationView：忽略细节的导航View，算是NavigationBottomView的代
 原来是变量长得太像弄混了。
 
 ## 第五步：
-这是还要创建 Presenter 以及 PresenterImpl 了。
+这时还要创建 Presenter 以及 PresenterImpl 了。
 
 ## 第六步：
 AppNavigationViewAsBottomNavImpl是最终实现功能的类。在实现它之前还要先实现BadgedBottomNavigationView，这是一个系统原生的导航BottomNavigationView的一个自定义子类。
