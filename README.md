@@ -7,7 +7,7 @@ derived 派生的
 EULA（ End-user license agreement ）最终用户许可协议
 tint 着色
 
-##第一步：
+## 第一步：
 创建Model：
 NavigationModel
 
@@ -19,10 +19,10 @@ NavigationModel
 
 NavigationConfig中提供了对NavigationModel中提供的NavigationItemEnum各项的配置操作方法，包括新增（目前没有用到）、筛选（把BuildConfig中无效化的页面去掉）。
 
-##第二步：
+## 第二步：
 接下来要创建UpdatableView。这个是需要进行切换的页面需要继承的接口。通常为Fragment，也就是切换的页面显示的视图。
 
-##第三步：
+## 第三步：
 AppNavigationView：忽略细节的导航View，算是NavigationBottomView的代理吧。
 
 ##第四步：
@@ -31,20 +31,20 @@ AppNavigationView：忽略细节的导航View，算是NavigationBottomView的代
 ~~出了点小问题，一个是NavigationModel报错，还有一个是是LOAD_ITEMS报错。~~
 原来是变量长得太像弄混了。
 
-##第五步：
+## 第五步：
 这是还要创建 Presenter 以及 PresenterImpl 了。
 
-##第六步：
+## 第六步：
 AppNavigationViewAsBottomNavImpl是最终实现功能的类。在实现它之前还要先实现BadgedBottomNavigationView，这是一个系统原生的导航BottomNavigationView的一个自定义子类。
 
 自定义 BadgedBottomNavigationView 的时候用到了一个 ViewTreeObserver.OnDrawListener 不熟悉类，但是感觉很厉害。
 BadgedBottomNavigationView 的构造函数中需要自定义样式，用到了 values/attrs.xml 文件（需要创建）。需要定义自定义 View 的参数。
 在这其中Google做了一个分析，最终是归为FirebaseAnalytics中的函数调用了，但是过程中打印了数次日志，同时发送了事件（Event）目前没有细看是否做了网络或是文件操作。
 
-##第七步：
+## 第七步：
 AppNavigationViewAsBottomNavImpl
 
-##第八步：
+## 第八步：
 最终，AppNavigationViewAsBottomNavImpl 在 BaseActivity 中被调用。
 
 
@@ -80,5 +80,5 @@ mToolbarTitle = mToolbarTitle.findViewById(R.id.toolbar_title);
 
 
 附：
-#单面板活动探究：
+# 单面板活动探究：
 SimpleSinglePaneActivity
