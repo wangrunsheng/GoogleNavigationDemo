@@ -105,12 +105,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-//        getToolbar();
+        getToolbar();
     }
 
     @Override
-    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onPostCreate(savedInstanceState, persistentState);
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
 
         final BadgedBottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         if (bottomNav != null) {
@@ -129,7 +129,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (mToolbar != null) {
                 setSupportActionBar(mToolbar);
                 mToolbar.setNavigationContentDescription(R.string.navdrawer_description_a11y);
-                mToolbarTitle = mToolbarTitle.findViewById(R.id.toolbar_title);
+                mToolbarTitle = mToolbar.findViewById(R.id.toolbar_title);
                 if (mToolbarTitle != null) {
                     int titleId = getNavigationTitleId();
                     if (titleId != 0) {

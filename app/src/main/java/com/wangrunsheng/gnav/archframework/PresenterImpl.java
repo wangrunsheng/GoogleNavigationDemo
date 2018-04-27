@@ -134,7 +134,7 @@ public class PresenterImpl<M extends Model<Q, UA>, Q extends QueryEnum, UA exten
         }
     }
 
-    protected M getmModel() {
+    protected M getModel() {
         return mModel;
     }
 }

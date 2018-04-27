@@ -15,8 +15,6 @@ public interface UpdatableView<M extends Model<Q, UA>, Q extends QueryEnum, UA e
 
     void displayData(M model, Q query);
 
-    void displayData(NavigationModel model, NavigationModel.NavigationQueryEnum query);
-
     void displayErrorMessage(Q query);
 
     void displayUserActionResult(M model, UA userAction, boolean success);
