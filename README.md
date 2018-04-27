@@ -2,10 +2,11 @@
 Google官方Android导航探究
 
 生词：
-synthetic 合成的
-derived 派生的
-EULA（ End-user license agreement ）最终用户许可协议
-tint 着色
+|synthetic 合成的|
+|--|
+|derived 派生的|
+|EULA（ End-user license agreement ）最终用户许可协议|
+|tint 着色|
 
 ## 第一步：
 创建Model：
