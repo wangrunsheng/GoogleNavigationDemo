@@ -12,16 +12,8 @@ public interface AppNavigationView {
 
     void setUpView();
 
-    void updateNavigationItems();
-
     void displayNavigationItems(NavigationModel.NavigationItemEnum[] items);
 
     void itemSelected(NavigationModel.NavigationItemEnum item);
-
-    void showNavigation();
-
-    void showItemBadge(NavigationModel.NavigationItemEnum item);
-
-    void clearItemBadge(NavigationModel.NavigationItemEnum item);
 
 }

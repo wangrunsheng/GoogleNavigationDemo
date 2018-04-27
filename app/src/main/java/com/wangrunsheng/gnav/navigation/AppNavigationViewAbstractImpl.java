@@ -57,18 +57,10 @@ public abstract class AppNavigationViewAbstractImpl implements UpdatableView<Nav
     }
 
     @Override
-    public void updateNavigationItems() {
-        mUserActionLister.onUserAction(NavigationModel.NavigationUserActionEnum.RELOAD_ITEMS, null);
-    }
-
-    @Override
     public abstract void displayNavigationItems(NavigationModel.NavigationItemEnum[] items);
 
     @Override
     public abstract void setUpView();
-
-    @Override
-    public abstract void showNavigation();
 
     @Override
     public void itemSelected(final NavigationModel.NavigationItemEnum item) {
@@ -93,11 +85,6 @@ public abstract class AppNavigationViewAbstractImpl implements UpdatableView<Nav
                 displayNavigationItems(model.getmItems());
                 break;
         }
-    }
-
-    @Override
-    public Uri getDataUri(NavigationModel.NavigationQueryEnum query) {
-        return null;
     }
 
     @Override

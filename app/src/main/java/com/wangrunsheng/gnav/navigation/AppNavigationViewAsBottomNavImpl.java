@@ -54,18 +54,4 @@ public class AppNavigationViewAsBottomNavImpl extends AppNavigationViewAbstractI
         mNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
-    @Override
-    public void showNavigation() {
-
-    }
-
-    @Override
-    public void showItemBadge(NavigationModel.NavigationItemEnum item) {
-        mNavigationView.showBadge(item.ordinal());
-    }
-
-    @Override
-    public void clearItemBadge(NavigationModel.NavigationItemEnum item) {
-        mNavigationView.clearBadge();
-    }
 }

@@ -19,8 +19,6 @@ public interface UpdatableView<M extends Model<Q, UA>, Q extends QueryEnum, UA e
 
     void displayUserActionResult(M model, UA userAction, boolean success);
 
-    Uri getDataUri(Q query);
-
     Context getContext();
 
     void addListener(UserActionListener<UA> listener);

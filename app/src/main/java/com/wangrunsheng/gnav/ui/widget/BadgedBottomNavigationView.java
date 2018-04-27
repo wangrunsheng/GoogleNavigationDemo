@@ -28,8 +28,7 @@ public class BadgedBottomNavigationView extends BottomNavigationView {
     private int badgePosition = NO_BADGE_POSITION;
     private Paint badgePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private float radius;
-    private @Nullable
-    OnNavigationItemSelectedListener listener;
+    private @Nullable OnNavigationItemSelectedListener listener;
 
     private ViewTreeObserver.OnDrawListener drawListener = new ViewTreeObserver.OnDrawListener() {
         @Override
@@ -59,16 +58,6 @@ public class BadgedBottomNavigationView extends BottomNavigationView {
                 return false;
             }
         });
-    }
-
-    public void showBadge(@IntRange(from = 0) int itemPosition) {
-        badgePosition = itemPosition;
-        invalidate();
-    }
-
-    public void clearBadge() {
-        badgePosition = NO_BADGE_POSITION;
-        invalidate();
     }
 
     @Override

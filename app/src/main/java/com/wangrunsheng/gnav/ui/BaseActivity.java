@@ -36,61 +36,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private TextView mToolbarTitle;
 
-    public static void navigateUpOrBack(Activity currentActivity, Class<? extends Activity> syntheticParentActivity) {
-
-        Intent intent = NavUtils.getParentActivityIntent(currentActivity);
-
-        if (intent == null && syntheticParentActivity != null) {
-            try {
-                intent = NavUtils.getParentActivityIntent(currentActivity, syntheticParentActivity);
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (intent == null) {
-            currentActivity.onBackPressed();
-        } else {
-            if (NavUtils.shouldUpRecreateTask(currentActivity, intent)) {
-                TaskStackBuilder builder = TaskStackBuilder.create(currentActivity);
-                builder.addNextIntentWithParentStack(intent);
-                builder.startActivities();
-            } else {
-                NavUtils.navigateUpTo(currentActivity, intent);
-            }
-        }
-    }
-
-    // 仅在 SimpleSinglePaneActivity 中调用了
-    public static Bundle intentToFragmentArguments(Intent intent) {
-        Bundle arguments = new Bundle();
-        if (intent == null) {
-            return arguments;
-        }
-
-        final Uri data = intent.getData();
-        if (data != null) {
-            arguments.putParcelable("_uri", data);
-        }
-
-        final Bundle extras = intent.getExtras();
-        if (extras != null) {
-            arguments.putAll(intent.getExtras());
-        }
-
-        return arguments;
-    }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         RecentTasksStyler.styleRecentTasksEntry(this);
-
-        // TODO: 2018/4/26 这里对欢迎页面是否需要显示做了一个判断
-
-        // TODO: 2018/4/26 这里对账号同步做了处理
-
-        // TODO: 2018/4/26 这里对用户偏好设置做了监听
 
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
@@ -117,10 +66,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             mAppNavigationView = new AppNavigationViewAsBottomNavImpl(bottomNav);
             mAppNavigationView.activityReady(this, getSelfNavDrawerItem());
 
-            // TODO: 2018/4/26 updateFeedBadge();
         }
 
-        // TODO: 2018/4/26 trySetupSwipeRefresh(); 手欠，多写了
     }
 
     public Toolbar getToolbar() {
@@ -143,21 +90,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return mToolbar;
     }
 
-    protected void setToolbarAsUp(View.OnClickListener clickListener) {
-        getToolbar();
-        if (mToolbar != null) {
-            mToolbar.setNavigationIcon(R.drawable.ic_up);
-            mToolbar.setNavigationContentDescription(R.string.close_and_go_back);
-            mToolbar.setOnClickListener(clickListener);
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        // TODO: 2018/4/26  updateFeedBadge();
-        super.onStart();
-    }
-
     protected int getNavigationTitleId() {
         return 0;
     }
@@ -169,12 +101,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         decor.setSystemUiVisibility(flags);
     }
 
-    // 原来是只针对特定页面导航按钮的角标更新
-    protected void showFeedBadge() {
-        if (mAppNavigationView != null) {
-            //mAppNavigationView.showItemBadge(NavigationModel.NavigationItemEnum.FEED);
-        }
-    }
 
     @Override
     protected void attachBaseContext(Context newBase) {
