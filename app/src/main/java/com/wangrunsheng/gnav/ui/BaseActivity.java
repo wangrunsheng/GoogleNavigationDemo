@@ -55,11 +55,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
 
         final BadgedBottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.disableShiftMode();
+
         // 3. 对导航进行了具体的实现
         if (bottomNav != null) {
             mAppNavigationView = new AppNavigationViewAsBottomNavImpl(bottomNav);
             mAppNavigationView.activityReady(this, getSelfNavDrawerItem());
+            bottomNav.disableShiftMode();
         }
 
     }
