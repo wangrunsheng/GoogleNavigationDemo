@@ -41,7 +41,7 @@
                     style="@style/ProductSans.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/home" />
+                    android:text="@string/navdrawer_item_map" />
 
             </android.support.v7.widget.Toolbar>
 

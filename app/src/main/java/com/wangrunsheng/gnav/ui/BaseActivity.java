@@ -1,15 +1,8 @@
 package com.wangrunsheng.gnav.ui;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,7 +14,6 @@ import com.wangrunsheng.gnav.navigation.AppNavigationView;
 import com.wangrunsheng.gnav.navigation.AppNavigationViewAsBottomNavImpl;
 import com.wangrunsheng.gnav.navigation.NavigationModel;
 import com.wangrunsheng.gnav.ui.widget.BadgedBottomNavigationView;
-import com.wangrunsheng.gnav.util.RecentTasksStyler;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -31,6 +23,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    // 1. 在 Activity 中唯一要做的就是创建导航
     private AppNavigationView mAppNavigationView;
 
     private Toolbar mToolbar;
@@ -39,7 +32,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RecentTasksStyler.styleRecentTasksEntry(this);
 
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
@@ -47,6 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    // 2. 每个子类重写此方法，将需要导航的 Activity 加入到豪华套餐
     protected NavigationModel.NavigationItemEnum getSelfNavDrawerItem() {
         return NavigationModel.NavigationItemEnum.INVALID;
     }
@@ -62,10 +55,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
 
         final BadgedBottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.disableShiftMode();
+        // 3. 对导航进行了具体的实现
         if (bottomNav != null) {
             mAppNavigationView = new AppNavigationViewAsBottomNavImpl(bottomNav);
             mAppNavigationView.activityReady(this, getSelfNavDrawerItem());
-
         }
 
     }
@@ -90,17 +84,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         return mToolbar;
     }
 
+    // 如果需要修改导航标签可以重写此方法
     protected int getNavigationTitleId() {
         return 0;
     }
-
-    protected void setFullscreenLayout() {
-        View decor = getWindow().getDecorView();
-        int flags = decor.getSystemUiVisibility();
-        flags |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-        decor.setSystemUiVisibility(flags);
-    }
-
 
     @Override
     protected void attachBaseContext(Context newBase) {

@@ -1,5 +1,6 @@
 package com.wangrunsheng.gnav.ui.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -8,6 +9,8 @@ import android.graphics.Paint;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.util.AttributeSet;
 import android.view.MenuItem;
@@ -16,6 +19,8 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
 import com.wangrunsheng.gnav.R;
+
+import java.lang.reflect.Field;
 
 /**
  * Created by russell on 2018/4/25.
@@ -91,5 +96,26 @@ public class BadgedBottomNavigationView extends BottomNavigationView {
     protected void onDetachedFromWindow() {
         getViewTreeObserver().removeOnDrawListener(drawListener);
         super.onDetachedFromWindow();
+    }
+
+    @SuppressLint("RestrictedApi")
+    public void disableShiftMode() {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) this.getChildAt(0);
+
+        try {
+            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+            shiftingMode.setAccessible(true);
+            shiftingMode.setBoolean(menuView, false);
+            shiftingMode.setAccessible(false);
+            for (int i = 0; i < menuView.getChildCount(); i++) {
+                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+                item.setShiftingMode(false);
+                item.setChecked(item.getItemData().isChecked());
+            }
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }
